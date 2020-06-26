@@ -1,8 +1,8 @@
 /* VARIABLES */
 :root {
-  --pink: #fc60a7;
+  --primarycolor: #8ac6ff;
   --light-blue: #00f3ff;
-  --yellow: #fbff21;
+  --yellow: #ffa114;
   --white: #ffffff;
 }
 
@@ -213,6 +213,7 @@ table {
 .tada {
   -webkit-animation-name: tada;
   animation-name: tada;
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes bounceIn {
@@ -260,6 +261,7 @@ table {
   }
 }
 
+/* per le animazioni*/
 @keyframes bounceIn {
   from,
   20%,
@@ -305,6 +307,7 @@ table {
   }
 }
 
+/*animazione del bottone*/
 .bounceIn {
   -webkit-animation-duration: 0.75s;
   animation-duration: 0.75s;
@@ -329,9 +332,9 @@ table {
 }
 
 body {
-  background-color: var(--pink);
+  background-color: var(--primarycolor);
 }
-
+/*contenitore con dentro tutti gli elementi*/
 .container {
   width: 80%;
   position: absolute;
@@ -342,10 +345,10 @@ body {
 }
 
 h1 {
-  font-family: "Bangers", cursive;
-  font-size: 200%;
-  margin-bottom: 20px;
-  color: var(--light-blue);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 300%;
+  margin-bottom: 20px; /*distaccarlo dal pulsante*/
+  color: var(--white);
 }
 
 button,
@@ -366,11 +369,12 @@ button {
   color: var(--yellow);
 }
 
+/*animazione del pulsante al passaggio del mouse*/
 button:hover,
 button:focus,
 button:active {
   background-color: var(--yellow);
-  color: var(--pink);
+  color: var(--primarycolor);
   -webkit-animation-duration: 0.75s;
   animation-duration: 0.75s;
   -webkit-animation-name: bounceIn;
@@ -384,6 +388,8 @@ footer {
   color: var(--white);
   padding-top: 30px;
 }
+
+/*togliere la sottolineatura dei link dei ristoranti*/
 .link-to {
   text-decoration: none;
 }
