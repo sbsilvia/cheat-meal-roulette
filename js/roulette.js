@@ -1,65 +1,46 @@
-var cheat_meals = [
-  { Name: "I Love Poke", Url: "https://www.ilovepoke.it/" },
-  { Name: "Toyama", Url: "http://www.ristorantetoyama.it/" },
-  { Name: "Wakaba", Url: "https://wakabamilano.blogspot.com/?m=1" },
-  {
-    Name: "El Chorillano",
-    Url: "https://zero.eu/it/luoghi/166746-el-chorillano,milano/",
-  },
-  { Name: "Nima", Url: "http://nimasushi.it/ristorante/milano/#menu-toggle" },
-  { Name: "Bomaki", Url: "https://www.bomaki.it/" },
-  { Name: "La Perla D'Oro", Url: "https://www.laperladoro.it/i-ristoranti/" },
-  { Name: "Tenoha", Url: "https://www.tenoha.it/" },
-  { Name: "Zàzà Ramen", Url: "https://www.zazaramen.it/" },
-  { Name: "Bhangrabar", Url: "http://bhangrabar.it/" },
-  { Name: "Plato Chic Superfood", Url: "https://platomilano.com/" },
-  { Name: "Karbon y Limon", Url: "http://www.dkarbonylimon.com/" },
-  { Name: "Beirut", Url: "http://www.ristorantebeirut.it/" },
-  { Name: "California Bakery", Url: "http://www.californiabakery.it/" },
-  { Name: "Acai Sister", Url: "https://www.acaisisters.com/" },
-  { Name: "Hygge", Url: "http://www.hyggecorner.com/" },
-  { Name: "Le Biciclette", Url: "http://www.lebiciclette.com/" },
-  { Name: "Fuorimano", Url: "http://fuorima.no/otbp.html" },
-  {
-    Name: "Golfo di Mondello",
-    Url: "https://m.facebook.com/GolfoDiMondelloMilano",
-  },
-  { Name: "Flower Burger", Url: "https://www.flowerburger.it/" },
-  { Name: "Hamerica's", Url: "https://www.hamericas.com/" },
-  { Name: "100 Montaditos", Url: "https://italy.100montaditos.com/it/menu/" },
-  { Name: "Macha Cafe", Url: "https://www.machacafe.it/" },
-  { Name: "Avobrothers", Url: "https://www.avobrothers.com/food" },
-  { Name: "Grezzo", Url: "https://grezzorawchocolate.com/" },
-  {
-    Name: "La Romana",
-    Url: "https://www.gelateriaromana.com/53-gelateria-milano.php",
-  },
+//un array
+var discover = [
+  { Name: "Spiaggia Rosa", Url: "https://www.sardegnaturismo.it/it/esplora/spiaggia-rosa" },
+  { Name: "Cala Sabina-Asinara", Url: "https://www.sardegnaturismo.it/it/esplora/cala-sabina-asinara" },
+  { Name: "Pscinas - Costa Verde", Url: "https://www.sardegnaturismo.it/it/esplora/piscinas-costa-verde" },
+  { Name: "Porto Zafferano", Url: "https://www.sardegnaturismo.it/it/esplora/porto-zafferano" },
+  { Name: "Porto Tramatzu", Url: "https://www.https://www.sardegnaturismo.it/it/esplora/porto-tramatzu.it/" },
+  { Name: "Cala Mutas", Url: "https://www.sardegnaturismo.it/it/esplora/cala-murtas" },
+  { Name: "Oasi di Bidderosa", Url: "https://www.sardegnaturismo.it/it/esplora/oasi-di-bidderosa" },
+  { Name: "Berchida", Url: "https://www.sardegnaturismo.it/it/esplora/berchida" },
+  { Name: "Cala Liberotto", Url: "https://www.sardegnaturismo.it/it/esplora/cala-liberotto" },
+  { Name: "Santa Maria", Url: "https://www.sardegnaturismo.it/it/esplora/santa-maria" },
+  { Name: "Marina di Orosei", Url: "https://www.sardegnaturismo.it/it/esplora/marina-di-orosei" },
+  { Name: "Tuttavista", Url: "https://www.sardegnaturismo.it/it/esplora/tuttavista" },
+  { Name: "Cala e spiaggia di Osalla", Url: "https://www.sardegnaturismo.it/it/esplora/cala-e-spiaggia-di-osalla" },
+  { Name: "Sos Dorroles", Url: "https://www.sardegnaturismo.it/it/esplora/sos-dorroles" },
+  { Name: "Palmasera", Url: "https://www.sardegnaturismo.it/it/esplora/palmasera" },
+  { Name: "Ziu Martine", Url: "https://www.sardegnaturismo.it/it/esplora/ziu-martine" },
+  { Name: "Cala Fuili", Url: "https://www.sardegnaturismo.it/it/esplora/cala-fuili" },
+  
 ];
 
-var $rouletteContainer = $(".roulette-container");
-var $roulette = $(".roulette");
-var $linkTo = $(".link-to");
-
-$(".spin").on("click", function () {
-  $rouletteContainer.removeClass("tada").animate({ "font-size": "16px" }, 0);
-  var total = cheat_meals.length,
-    selected = Math.floor(Math.random() * total * 5),
-    i = 0;
-
-  for (i = 0; i <= total * 5; i++) {
+const rouletteContainer = document.querySelector(".roulette-container");
+const roulette = document.querySelector(".roulette");
+const linkTo = document.querySelector(".link-to");
+const spin = document.querySelector(".spin");
+spin.addEventListener("click", () => {
+  rouletteContainer.classList.remove("tada");
+  const total = discover.length;
+  const selected = Math.floor(Math.random() * total);
+  for (let i = 0; i <= total; i++) {
     setTimeout(
-      (function (i) {
-        return function () {
-          $roulette.text(cheat_meals[i % total].Name.toUpperCase());
-          $linkTo[0].href = cheat_meals[i % total].Url;
+      ((i) => {
+        return () => {
+          roulette.innerText = discover[i % total].Name;
+          linkTo.href = discover[i % total].Url;
           if (i === selected) {
-            $roulette.animate({ "font-size": "30px" }, "fast").addClass("tada");
+            roulette.classList.add("tada");
           }
         };
       })(i),
       i * 100
     );
-
     if (i === selected) {
       break;
     }
